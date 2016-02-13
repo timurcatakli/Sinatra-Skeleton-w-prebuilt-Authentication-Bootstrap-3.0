@@ -1,0 +1,11 @@
+<div class="container" align="center">
+  <% if @logged_in_as %>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Snapps!</strong> You are currently logged in as <b><%= @logged_in_as.email %></b> and are not authorized to see this page.
+      </div>
+  <% else %>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Snapps!</strong> You are not authorized to see this page.
+      </div>
+  <% end %>
+</div>
