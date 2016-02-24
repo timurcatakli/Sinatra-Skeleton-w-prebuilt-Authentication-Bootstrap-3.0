@@ -51,19 +51,6 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home</a></li>
-            
-            <% if session[:user_id] %>
-              
-              <li><a href="/logout">Logout</a></li>
-            
-            <% else %>
-
-              <li><a href="/users/new">Register</a></li>
-              <li><a href="/sessions/new">Login</a></li>
-
-            <% end %>
-
-            
             <li><a href="/secret">Secret Area</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -77,6 +64,25 @@
                 <li><a href="#">One more separated link</a></li>
               </ul>
             </li>
+            <!-- If user logged in and there is a session id then show below -->
+            <% if session[:user_id] %>
+              
+              <li><a href="/logout">Logout</a></li>
+            
+            <% else %>
+
+              <li><a href="/users/new">Register</a></li>
+              <li><a href="/sessions/new">Login</a></li>
+
+            <% end %>
+
+            <!-- if there is a session id then display user info -->
+            <% if current_user %>
+              <li><a href="/users/<%= current_user.id %>">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <%= current_user.first_name %> <%= current_user.last_name %></a>
+              </li>
+            <% end %>
           </ul>
 
 
